@@ -16,8 +16,7 @@ class ServerController extends Controller
 
     public function show($id)
     {
-        return "<h1 class='text-2xl font-mono text-color p-6'>Какой-то сервер $id</h1>";
-        // return view('pages.servers');
+        return view('pages.server');
     }
 
     public function play($id)

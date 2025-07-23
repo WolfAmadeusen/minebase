@@ -26,9 +26,6 @@ Route::get('/servers/{server}', [ServerController::class, 'show'])->name('server
 Route::get('/servers/{server}/play', [ServerController::class, "play"])->name('servers.play');
 
 
-// Ошибки
-Route::fallback([ErrorController::class, 'index'])->name("error");
-
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -38,6 +35,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Ошибки
+Route::fallback([ErrorController::class, 'index'])->name("error");
+
 
 // Переписать
 require __DIR__ . '/auth.php';
